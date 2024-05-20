@@ -121,64 +121,8 @@ print(f"CSV file saved to: {output_path3}")
 
 # COMMAND ----------
 
-# from pyspark.ml.feature import StandardScaler
-# from pyspark.ml.feature import VectorAssembler
-# from pyspark.sql.functions import col, to_timestamp
-# from pyspark.sql.types import IntegerType
-
-# # Cast columns to the correct data types
-# silver_t_data = silver_t_data.withColumn("Invoice", col("Invoice").cast(IntegerType()))
-# silver_t_data = silver_t_data.withColumn("StockCode", col("StockCode").cast(IntegerType()))
-# silver_t_data = silver_t_data.withColumn("Description", col("Description").cast("string"))
-# silver_t_data = silver_t_data.withColumn("InvoiceDate", to_timestamp(col("InvoiceDate")))
-# silver_t_data = silver_t_data.withColumn("Country", col("Country").cast("string"))
-# # silver_t_data = silver_t_data.withColumn("Month", col("Month").cast(IntegerType()))
-# silver_t_data = silver_t_data.withColumn("DayOfMonth", col("DayOfMonth").cast(IntegerType()))
-
-# # Replace null values with default value (0 in this case)
-# silver_t_data1 = silver_t_data.fillna(0)
-
-# # Create a vector assembler to combine the relevant columns into "features"
-# assembler = VectorAssembler(
-#     inputCols=["Invoice", "StockCode", "Quantity", "Price", "Month", "DayOfMonth"],
-#     outputCol="features")
-
-# # Apply the vector assembler to create "features" column
-# silver_t_data_with_features = assembler.transform(silver_t_data1)
-
-# # Perform feature scaling with error handling
-# try:
-#     scaler = StandardScaler(inputCol="features", outputCol="scaled_features")
-#     scaled_data = scaler.fit(silver_t_data_with_features).transform(silver_t_data_with_features)
-# except Exception as e:
-#     print("An error occurred during scaling:", e)
-#     scaled_data = None
-
-# COMMAND ----------
-
-# Display the "features" column
-# scaled_data.select("features").show()
-
-# Display the "scaled_features" column
-# scaled_data.select("scaled_features").show()
-
-# COMMAND ----------
-
 # MAGIC %md
 # MAGIC
-
-# COMMAND ----------
-
-df = spark.read.format("csv").load('/databricks-datasets/timeseries/Fires')
-
-# COMMAND ----------
-
-df.display()
-
-# COMMAND ----------
-
-# MAGIC %sh
-# MAGIC ls '/databricks-datasets/sms_spam_collection'
 
 # COMMAND ----------
 
